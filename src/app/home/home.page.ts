@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SharedService } from "../shared/shared.service"
+
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  taskList = [];
+
+
+
+  constructor(private shared: SharedService) {}
+
+  ngOnInit() {
+    this.taskList = this.shared.getList()
+
+
+  }
 
 }
+
+
