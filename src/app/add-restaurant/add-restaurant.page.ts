@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { SharedService } from "../shared/shared.service"
+
 
 @Component({
   selector: 'app-add-restaurant',
   templateUrl: './add-restaurant.page.html',
   styleUrls: ['./add-restaurant.page.scss'],
 })
-export class AddRestaurantPage implements OnInit {
+export class AddRestaurantPage implements OnInit, OnDestroy {
 
   name:any;
   address:any;
@@ -17,7 +18,9 @@ export class AddRestaurantPage implements OnInit {
   tags:any;
   comments:any;
 
-  taskList = [];
+  taskList = [] as any;
+
+  subcription: Subscription;
 
 
 
@@ -36,16 +39,23 @@ export class AddRestaurantPage implements OnInit {
 
     }
 
-    this.taskList.push(values)
+    this.taskList.push(values);
 
+    this.shared.changeList(this.taskList)
 
-
-
-    }
-
-  ngOnInit(): void {
-
-    this.shared.setList(this.taskList)
   }
+
+  ngOnInit(){
+    this.subcription = this.shared.currentList.subscribe(list => this.taskList = list)
+  }
+
+  ngOnDestroy(){
+
+    this.subcription.unsubscribe();
+  }
+
+
+
+
 
 }

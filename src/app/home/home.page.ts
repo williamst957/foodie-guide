@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharedService } from "../shared/shared.service"
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 
 @Component({
@@ -7,18 +8,33 @@ import { SharedService } from "../shared/shared.service"
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   taskList = [];
+
+  subcription: Subscription;
 
 
 
   constructor(private shared: SharedService) {}
 
-  ngOnInit() {
-    this.taskList = this.shared.getList()
+  addRestaurant(){
 
 
+
+
+  }
+  deleteRestaurant(index){
+    this.taskList.splice(index, 1);
+}
+
+  ngOnInit(){
+    this.subcription = this.shared.currentList.subscribe(list => this.taskList = list)
+  }
+
+  ngOnDestroy(){
+
+    this.subcription.unsubscribe();
   }
 
 }

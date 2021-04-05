@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
+
   taskList = [];
+  private listSource = new BehaviorSubject<Array<any>>(this.taskList)
+  currentList = this.listSource.asObservable();
 
-  constructor() { }
+    constructor() { }
 
-  setList(data){
-    this.taskList=data;
-  }
 
-  getList(){
-    return this.taskList;
-  }
+    changeList(list:[]) {
+      this.listSource.next(list)
+    }
+
+
 }

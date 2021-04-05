@@ -21,11 +21,23 @@
 
 
       <ion-list>
-        <ion-item *ngFor="let restaurants of taskList">
+        <ion-item *ngFor="let restaurants of taskList; let i = index">
+
           {{restaurants.name}}
+
+          <div class="item-note" item-end>
+            <button ion-button clear (click)="updateRestaurant(i)">
+              <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button clear (click)="deleteRestaurant(i)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </div>
 
         </ion-item>
       </ion-list>
+
+
 
   </ion-card-content>
 
