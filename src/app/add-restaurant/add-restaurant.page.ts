@@ -11,6 +11,7 @@ import { SharedService } from "../shared/shared.service"
 })
 export class AddRestaurantPage implements OnInit, OnDestroy {
 
+  id:any;
   name:any;
   address:any;
   number:any;

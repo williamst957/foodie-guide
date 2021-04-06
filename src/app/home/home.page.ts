@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from "../shared/shared.service"
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -16,14 +19,21 @@ export class HomePage implements OnInit {
 
 
 
-  constructor(private shared: SharedService) {}
+  constructor(private shared: SharedService, public alertCtrl: AlertController, private router: Router) {}
 
-  addRestaurant(){
+  showRestaurant(index){
+    let navigationExtras = {
+      queryParams: {
+        special: index
+      }
+
+    }
+
+    this.router.navigate(['show-restaurant'], navigationExtras);
 
 
 
-
-  }
+}
   deleteRestaurant(index){
     this.taskList.splice(index, 1);
 }
