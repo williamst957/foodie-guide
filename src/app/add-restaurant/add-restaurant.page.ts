@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { SharedService } from "../shared/shared.service"
+
 
 
 @Component({
@@ -26,6 +28,10 @@ export class AddRestaurantPage implements OnInit, OnDestroy {
 
 
   constructor(public navCtrl: NavController, private shared: SharedService) { }
+
+  public handleAddressChange(address: any) {
+    // Do some stuff
+}
 
 
   addRestaurant() {
