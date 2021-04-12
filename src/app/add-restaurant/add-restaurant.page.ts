@@ -20,6 +20,7 @@ export class AddRestaurantPage implements OnInit, OnDestroy {
   rating:any;
   tags:any;
   comments:any;
+  confirm:any;
 
   taskList = [] as any;
 
@@ -46,6 +47,14 @@ export class AddRestaurantPage implements OnInit, OnDestroy {
 
     }
 
+    this.name="";
+    this.address="";
+    this.number="";
+    this.tags="";
+    this.comments="";
+    this.confirm="Restaurant Succesfully Added"
+
+
     this.taskList.push(values);
 
     this.shared.changeList(this.taskList)
@@ -59,6 +68,8 @@ export class AddRestaurantPage implements OnInit, OnDestroy {
   ngOnDestroy(){
 
     this.subcription.unsubscribe();
+    this.confirm=""
+
   }
 
 

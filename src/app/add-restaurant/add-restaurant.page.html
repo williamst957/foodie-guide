@@ -18,7 +18,7 @@
 
 
       <ion-item>
-        <ion-label position="floating">Name</ion-label>
+        <ion-label position="floating">Restaurant Name</ion-label>
         <ion-input placeholder='Name' type='text' [(ngModel)]="name"></ion-input>
       </ion-item>
 
@@ -33,8 +33,12 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Rating</ion-label>
-        <ion-input placeholder='Rating' [(ngModel)]="rating" ></ion-input>
+        <ion-label position='fixed' >Rating(1-5)</ion-label>
+        <br>
+        <ion-range placeholder='Rating' min="1" max="5" step="1" snaps="true" [(ngModel)]="rating" >
+          <ion-icon size="small" slot="start" name="sad-outline"></ion-icon>
+      <ion-icon size="small" slot="end" name="happy-outline"></ion-icon>
+        </ion-range>
       </ion-item>
 
       <ion-item>
@@ -56,7 +60,10 @@
 
 
 
+
     </ion-card-content>
   </ion-card>
+
+
 
 </ion-content>

@@ -17,23 +17,27 @@
   </ion-header>
 
   <ion-card>
+    <h2 *ngIf="taskList.length == 0">Your Restaurant List is empty :(. Add a restaurant to get started</h2>
     <ion-card-content>
 
 
+
+
       <ion-list>
-        <ion-item *ngFor="let restaurants of taskList; let i = index" (click)="showRestaurant(i)">
+        <ion-item-sliding *ngFor="let restaurants of taskList; let i = index" (click)="showRestaurant(i)">
+          <ion-item >
 
-          {{restaurants.name}}
+            <ion-label>{{restaurants.name}}</ion-label>
+            Rating: {{restaurants.rating}}
+          </ion-item>
 
-          <div class="item-note" item-end>
 
-            <button ion-button clear (click)="deleteRestaurant(i)">
-              <ion-icon name="trash"></ion-icon>
-            </button>
-          </div>
+            <ion-item-options side="end">
+              <ion-item-option (click)="deleteRestaurant(i)">Delete</ion-item-option>
+            </ion-item-options>
 
-        </ion-item>
 
+        </ion-item-sliding>
 
       </ion-list>
 
