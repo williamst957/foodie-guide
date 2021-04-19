@@ -16,15 +16,43 @@
 
     <ion-card-content>
 
-
       <ion-item>
         <ion-label position="floating">Restaurant Name</ion-label>
-        <ion-input placeholder='Name' type='text' [(ngModel)]="name"></ion-input>
+        <ion-input placeholder='Restaurant Name' type='text' [(ngModel)]="name"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Address</ion-label>
-        <ion-input placeholder='Address' [(ngModel)]="address"></ion-input>
+        <ion-label position="floating">Street Number</ion-label>
+        <ion-input placeholder='Street Number' [(ngModel)]="streetNo"></ion-input>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Street Name</ion-label>
+        <ion-input placeholder='Street Name' [(ngModel)]="streetName"></ion-input>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Street Type</ion-label>
+        <ion-select placeholder="Select One" [(ngModel)]="streetType">
+          <ion-select-option value="Avenue">Avenue</ion-select-option>
+          <ion-select-option value="Street">Street</ion-select-option>
+          <ion-select-option value="Alley">Alley</ion-select-option>
+          <ion-select-option value="Quay">Quay</ion-select-option>
+          <ion-select-option value="Road">Road</ion-select-option>
+          <ion-select-option value="Lane">Lane</ion-select-option>
+          <ion-select-option value="Cul-de-sac">Cul-de-sac</ion-select-option>
+          <ion-select-option value="Drive">Drive</ion-select-option>
+
+        </ion-select>
+
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input placeholder='City'  [(ngModel)]="city"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -52,7 +80,6 @@
       </ion-item>
 
 
-
         <ion-button type="submit" (click)="addRestaurant()">Add Restaurant</ion-button>
 
 
@@ -60,8 +87,8 @@
 
 
 
-
     </ion-card-content>
+
   </ion-card>
 
 
